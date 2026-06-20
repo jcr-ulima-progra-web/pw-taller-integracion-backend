@@ -1,0 +1,5 @@
+GET http://localhost:3005/
+###
+GET http://localhost:3005/partidos
+###
+GET http://localhost:3005/partidos/1
