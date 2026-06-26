@@ -1,0 +1,18 @@
+GET http://localhost:3005/
+###
+#GENERAR TOKEN
+POST http://localhost:3005/auth/login
+Content-Type: application/json
+
+{
+    "correo": "admin@admin.com",
+    "password": "admin123"
+} 
+
+###
+GET http://localhost:3005/auth/usuario
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiQWRtaW5pc3RyYWRvciIsImNvcnJlbyI6ImFkbWluQGFkbWluLmNvbSIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzgyNDMxNzMwLCJleHAiOjE3ODMwMzY1MzB9.5jvAOwpOTBe8tSMPWyBDiZpltGewcdyqGXs_s4rdMrQ
+Content-Type: application/json
+
+###
+GET http://localhost:3005/partidos/1

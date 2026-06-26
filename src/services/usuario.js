@@ -1,8 +1,11 @@
 import jwt from 'jsonwebtoken'
+import repository from '../repositories/usuario.js';
+import prediccionRepo from '../repositories/prediccion.js'
+import bcrypt from 'bcryptjs';
 
 import { JWT_SECRET } from '../middleware/auth.js'
 
-const generateToken = (id, nombre, correo, rol) => {
+const generarToken = (id, nombre, correo, rol) => {
     return jwt.sign({id, nombre, correo, rol}, JWT_SECRET, { expiresIn: '7d' });
 }
 
@@ -48,12 +51,12 @@ const login = async ({ correo, password }) => {
 
     const usr = repository.findByCorreo(correo);
     if (!usr) {
-        return { success: false, message: 'Correo o password incorrectos.' };
+        return { success: false, message: 'Correo o password incorrectos.2' };
     }
 
     const isPasswordValid = await bcrypt.compare(password, usr.password);
     if (!isPasswordValid) {
-        return { success: false, message: 'Correo o password incorrectos.' };
+        return { success: false, message: 'Correo o password incorrectos.3' };
     }
 
     const token = generarToken(usr.id, usr.nombre, usr.correo, usr.rol);

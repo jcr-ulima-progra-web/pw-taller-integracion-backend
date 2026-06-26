@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 import partidoRouter from './src/routes/partido.js'
+import usuarioRouter from './src/routes/usuario.js'
 
 const app = express();
 app.use(bodyParser.json());
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/partidos', partidoRouter);
+app.use('/auth', usuarioRouter)
 
 const PORT = 3005;
 app.listen(PORT, () => {

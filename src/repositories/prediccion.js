@@ -7,6 +7,13 @@ const findAll = () => data;
 
 const findOne = (id) => data.find(p => p.id === parseInt(id));
 
+const findByUsuario = (usuarioId) => data.filter(p => p.usuarioId === parseInt(usuarioId));
+
+const findByUsuarioAndPartido = (usuarioId, partidoId) =>
+    data.find(p => p.usuarioId === parseInt(usuarioId) && p.partidoId === parseInt(partidoId));
+
+const findByPartido = (partidoId) => data.filter(p => p.partidoId === parseInt(partidoId));
+
 const create = (payload) => {
     payload.id = ++counter;
     data.push(payload);
@@ -34,6 +41,9 @@ const remove = (id) => {
 const repository = {
     findAll,
     findOne,
+    findByUsuario,
+    findByUsuarioAndPartido,
+    findByPartido,
     create,
     update,
     remove
