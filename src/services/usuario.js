@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 
 import repository from '../repositories/usuario.js';
 import prediccionRepo from '../repositories/prediccion.js';
-import partidoRepo from '../repositories/partido.js';
+import partidoRepo from '../repositories/partido_old.js';
 import { JWT_SECRET } from '../middleware/auth.js';
 
 const generarToken = (id, nombre, correo, rol) => {

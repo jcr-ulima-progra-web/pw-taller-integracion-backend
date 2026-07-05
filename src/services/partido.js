@@ -1,10 +1,10 @@
 import partidoRepo from '../repositories/partido.js';
 
-const listar = () => partidoRepo.findAll();
+const listar = async () => partidoRepo.findAll();
 
-const obtener = (id) => partidoRepo.findOne(id);
+const obtener = async (id) => partidoRepo.findOne(id);
 
-const registrarMarcadorReal = (id, marcadorReal) => {
+const registrarMarcadorReal = async (id, marcadorReal) => {
     if (
         marcadorReal?.equipo1 === undefined ||
         marcadorReal?.equipo2 === undefined

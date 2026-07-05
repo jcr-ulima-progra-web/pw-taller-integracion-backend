@@ -1,24 +1,28 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
+import app from './app.js'
+import sequelize from './src/config/database.js'
 
-import usuarioRouter from './src/routes/usuario.js';
-import partidoRouter from './src/routes/partido.js';
-import prediccionRouter from './src/routes/prediccion.js';
+async function main() {
+    try {
+        const init = process.argv[2];
 
-const app = express();
-app.use(bodyParser.json());
-app.use(cors());
+        if (init)
+            await sequelize.sync({ force: true })
+        else
+            await sequelize.sync({ force: false })
 
-app.get('/', (req, res) => {
-    return res.json({ mensaje: 'API Mundial - en memoria', code: 200 });
-});
+        console.log('Base de datos sincronizada!')
+        
+        const port = 3005;
 
-app.use('/auth', usuarioRouter);
-app.use('/partido', partidoRouter);
-app.use('/prediccion', prediccionRouter);
+        app.listen(port, () => {
+        console.log(`Server is running on port ${port}.`);
+        });
 
-const PORT = 3005;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-});
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+main();
+
